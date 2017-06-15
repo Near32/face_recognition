@@ -1,8 +1,14 @@
 from PIL import Image
 import face_recognition
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', help='image in which we want to find faces', dest='image', type=str, default='../TEST/unknown/test.jpg')
+args = parser.parse_args()
+
 
 # Load the jpg file into a numpy array
-image = face_recognition.load_image_file("biden.jpg")
+image = face_recognition.load_image_file(args.image)
 
 # Find all the faces in the image
 face_locations = face_recognition.face_locations(image)
